@@ -43,8 +43,10 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  isAdmin       Boolean @default(false)
   accounts      Account[]
   sessions      Session[]
+
 }
 
 model VerificationToken {
@@ -53,4 +55,23 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Product {
+  id           String   @id @default(cuid()) @map("_id")
+  createdAt    DateTime @default(now())
+  slug         String @unique
+  title        String
+  cover        String
+  price        Int
+  pictures     String[]
+  capacity     Int
+  width        Int
+  height       Int
+  material     String
+  color        String
+  mugType      String
+  desc         String
+  detail       String
+  isFeatured   Boolean
 }

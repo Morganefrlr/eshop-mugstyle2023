@@ -1,11 +1,26 @@
+
 import Image from 'next/image';
-import { singleProduct } from '@/data';
+import { Product, singleProduct } from '@/data';
 import Quantity from '@/components/Quantity';
 import Newsletter from '@/components/Newsletter';
 
+const getData = async (slug:string) =>{
+    const res = await fetch(`http://localhost:3000/api/products/${slug}`,{
+        cache: 'no-store'
+    })
+    if(!res.ok){
+        throw new Error('Failed')
+    }
+    return res.json()
+}
+
+const ProductPage = async ({params} : {params : {slug : string}}) => {
+
+    const {slug} = params
+    const data : Product = await getData(slug)
+    
 
 
-const ProductPage = () => {
     return (
         <div className='mt-20'>
             <div className='flex gap-10 relative w-[90vw] mx-auto 2xl:w-[70vw] 2xl:gap-40 max-md:flex-col'>
@@ -13,7 +28,7 @@ const ProductPage = () => {
                     <Image src={singleProduct.img} width={200} height={200} alt='' className='w-full h-[500px] object-cover max-sm:h-[400px]'/>
                     <div className='absolute top-[440px] left-3 flex gap-4 w-[45vw] max-md:w-fit max-sm:top-[360px]'>
                         {singleProduct.pictures && singleProduct.pictures.map((img, index) => 
-                            <Image src={img} alt="" width={200} height={200} className='w-[120px] h-[120px] object-cover shadow-md max-lg:w-[100px] max-lg:h-[100px] max-md:w-[150px] max-md:h-[150px] max-sm:w-[80px] max-sm:h-[80px]'/>
+                            <Image src={img} alt="" width={200} height={200} className='w-[120px] h-[120px] object-cover shadow-md max-lg:w-[100px] max-lg:h-[100px] max-md:w-[150px] max-md:h-[150px] max-sm:w-[80px] max-sm:h-[80px]' key={index}/>
                         )}
                     </div>
                 </div>

@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { VscMenu, VscChromeClose  } from "react-icons/vsc";
-import { SlLogout } from "react-icons/sl";
-import CartIcon from "./CartIcon";
+import UserLinks from "./UserLinks";
 
 const Menu = () => {
 
@@ -24,11 +23,7 @@ const Menu = () => {
                     <Link href='/' onClick={() => setOpen(false)}>Our Products</Link>
                     <Link href='/' onClick={() => setOpen(false)}>About</Link>
                     <Link href='/' onClick={() => setOpen(false)}>Contact</Link>
-                    {user ? 
-                        (<SlLogout className="text-yellow-800 text-lg cursor-pointer"/>)
-                        :
-                        (<Link href="/login" className="hover:text-yellow-800 cursor-pointer hover:underline hover:decoration-inherit hover:underline-offset-4" onClick={() => setOpen(false)}>Login</Link>)
-                    }
+                    <UserLinks/>
                 </div>
             }
         </div>

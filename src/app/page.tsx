@@ -11,7 +11,8 @@ export default function Home() {
       <Start />
       <About />
       <Featured />
-      <ProductsList />
+      <h2 className="uppercase text-sm text-center mt-40 mb-20">More Products</h2>
+      <ProductsList update={false} home={true}/>
       <Newsletter />
     </div>
   )

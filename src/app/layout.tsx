@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 import Footer from '@/components/Footer'
 import AuthProvider from '@/providers/AuthProvider'
+import QueryProvider from '@/providers/QueryProvider'
 
 const rubik = Rubik({ subsets: ['latin'] })
 
@@ -21,9 +22,11 @@ export default function RootLayout({
     <html lang="fr">
       <body className={rubik.className}>
         <AuthProvider>
-          <Navbar/>
-          {children}
-          <Footer/>
+          <QueryProvider>
+            <Navbar/>
+            {children}
+            <Footer/>
+          </QueryProvider>
         </AuthProvider>
       </body>
     </html>

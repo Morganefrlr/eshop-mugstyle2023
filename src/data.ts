@@ -1,4 +1,4 @@
-type Product = {
+export type Product = {
     id: number,
     title:string,
     img: string,
@@ -41,7 +41,7 @@ export const featuredProducts: Products = [
     {
         id:1,
         title:"The sparkling ice cream",
-        slug:"the-sparkling-ice-cream",
+        slug:"deux",
         img:'/m1-d.jpg',
         price: 150
     },

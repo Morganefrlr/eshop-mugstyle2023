@@ -1,28 +1,25 @@
+'use client'
+
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 
 const AddPage = () => {
 
+    const {data : session , status} = useSession()
+    const router = useRouter()
 
+    if(status === 'loading'){
+       return <div>Loading.......</div>
+    }
+    
+    if(status === 'unauthenticated' || !session?.user.isAdmin){
+        router.push("/")
+    }
 
-    /* type Product = {
-    id: number,
-    title:string,
-    img: string,
-    price: number,
-    pictures?: string[],
-    slug: string,
-    capacity?: number,
-    width?: number,
-    height?: number,
-    material?: string,
-    color?: string,
-    mugType?: string, 
-    desc?: string,
-    detail?: string 
-}*/
     return (
         <div className="w-full h-[65vh] flex flex-col gap-10 items-center mt-20 max-md:h-auto">
-            <h1 className="text-3xl mb-20">Add Product</h1>
+            <h1 className="text-3xl mb-20 uppercase">Add Product</h1>
             <div className="grid grid-cols-2 gap-10 mx-10 max-md:flex max-md:flex-col">
                 <div className="flex gap-2 items-center max-md:flex-col">
                     <p className="text-lg uppercase tracking-widest">Title: </p>
