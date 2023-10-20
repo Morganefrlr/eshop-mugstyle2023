@@ -5,6 +5,8 @@ import { Rubik } from 'next/font/google'
 import Footer from '@/components/Footer'
 import AuthProvider from '@/providers/AuthProvider'
 import QueryProvider from '@/providers/QueryProvider'
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const rubik = Rubik({ subsets: ['latin'] })
 
@@ -26,6 +28,7 @@ export default function RootLayout({
             <Navbar/>
             {children}
             <Footer/>
+            <ToastContainer position='bottom-right' theme='dark' autoClose={3000} />
           </QueryProvider>
         </AuthProvider>
       </body>

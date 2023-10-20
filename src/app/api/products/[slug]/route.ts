@@ -41,5 +41,4 @@ export const DELETE = async (req:NextRequest,{params} : {params:{slug:string}}) 
     }
     return new NextResponse(JSON.stringify({message: 'You are not allowed!'}), {status : 403})
 
-    
 }

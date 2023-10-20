@@ -1,6 +1,8 @@
 import { LiaTrashSolid } from "react-icons/lia";
 import { useMutation, useQueryClient } from "react-query";
 
+
+
 const ButtonDelete = ({slug} : {slug :string}) => {
 
     const queryClient = useQueryClient()
@@ -19,6 +21,10 @@ const ButtonDelete = ({slug} : {slug :string}) => {
     const handleDelete = () =>{
         mutation.mutate({slug})
     }
+
+
+
+    
     return (
         <button onClick={handleDelete}> 
             <LiaTrashSolid className='hover:text-red-600 cursor-pointer'/>

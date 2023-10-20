@@ -1,6 +1,7 @@
-import Card from "@/components/Card";
+
+
 import ProductsList from "@/components/ProductsList";
-import { Product, allProducts } from "@/data";
+import { ProductType} from "@/types";
 
 const getData = async () =>{
     const res = await fetch(`http://localhost:3000/api/products/`,{
@@ -15,7 +16,7 @@ const getData = async () =>{
 
 const ListProductsPage = async () => {
 
-    const data : Product[] = await getData()
+    const data : ProductType[] = await getData()
 
 
 
