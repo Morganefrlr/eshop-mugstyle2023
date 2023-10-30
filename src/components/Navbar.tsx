@@ -2,6 +2,7 @@ import Link from "next/link";
 import CartIcon from "./CartIcon";
 import Menu from "./Menu";
 import UserLinks from "./UserLinks";
+import AdminLink from "./AdminLink";
 
 
 const Navbar = () => {
@@ -16,7 +17,8 @@ const Navbar = () => {
             <Link href="/" className="hover:text-yellow-800 cursor-pointer hover:underline hover:decoration-yellow-800 hover:underline-offset-4">CONTACT</Link>
           </div>
           <div className="flex gap-4 justify-center items-center text-xs uppercase">
-            <div className="max-md:hidden">
+            <div className="max-md:hidden flex gap-10">
+              <AdminLink />
               <UserLinks/>
             </div>
             <CartIcon/>

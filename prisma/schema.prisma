@@ -74,4 +74,5 @@ model Product {
   desc         String
   detail       String
   isFeatured   Boolean
+  views        Int 
 }

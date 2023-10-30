@@ -1,8 +1,8 @@
 
-import Image from 'next/image';
 import { ProductType} from '@/types';
 import Quantity from '@/components/Quantity';
 import Newsletter from '@/components/Newsletter';
+import Slider from '@/components/Slider';
 
 
 
@@ -21,19 +21,14 @@ const ProductPage = async ({params} : {params : {slug : string}}) => {
 
     const {slug} = params
     const singleProduct : ProductType = await getData(slug)
-    
 
+ 
 
     return (
         <div className='mt-20'>
             <div className='flex gap-10 relative w-[90vw] mx-auto 2xl:w-[70vw] 2xl:gap-40 max-md:flex-col'>
                 <div className='flex-1'>
-                    <Image src={singleProduct.cover} width={200} height={200} alt='' className='w-full h-[500px] object-cover max-sm:h-[400px]'/>
-                    <div className='absolute top-[440px] left-3 flex gap-4 w-[45vw] max-md:w-fit max-sm:top-[360px]'>
-                        {singleProduct.pictures && singleProduct.pictures.map((img, index) => 
-                            <Image src={img} alt="" width={200} height={200} className='w-[120px] h-[120px] object-cover shadow-md max-lg:w-[100px] max-lg:h-[100px] max-md:w-[150px] max-md:h-[150px] max-sm:w-[80px] max-sm:h-[80px]' key={index}/>
-                        )}
-                    </div>
+                 <Slider images={singleProduct.pictures} />   
                 </div>
                 <div className='flex-1 flex gap-8 flex-col justify-center'>
                     <h1 className='text-4xl max-md:mt-20 max-sm:mt-10'>{singleProduct.title}</h1>

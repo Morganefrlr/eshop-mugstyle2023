@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { LiaTrashSolid, LiaEdit } from "react-icons/lia";
+import {LiaEdit } from "react-icons/lia";
 import ButtonDelete from './ButtonDelete';
 
 
@@ -26,9 +26,12 @@ const Card : React.FC<Props> = ({title, img, price, slug, update}) => {
                     <p className='text-lg'>{title}</p>
                     <p>$ {price}</p>
                 </div>
+                <div>
+                    
+                </div>
                 
                 <div className='h-full flex flex-col justify-between text-2xl'>
-                    <LiaEdit className='hover:text-green-600 cursor-pointer'/>
+                  <Link href={`/administrator/${slug}`}><LiaEdit className='hover:text-green-600 cursor-pointer'/></Link>
                    <ButtonDelete slug={slug}/>
                 </div>
             </>)

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { VscMenu, VscChromeClose  } from "react-icons/vsc";
 import UserLinks from "./UserLinks";
+import AdminLink from "./AdminLink";
 
 const Menu = () => {
 
@@ -23,6 +24,7 @@ const Menu = () => {
                     <Link href='/' onClick={() => setOpen(false)}>Our Products</Link>
                     <Link href='/' onClick={() => setOpen(false)}>About</Link>
                     <Link href='/' onClick={() => setOpen(false)}>Contact</Link>
+                    <AdminLink />
                     <UserLinks/>
                 </div>
             }

@@ -14,7 +14,8 @@ export type ProductType = {
     color?: string,
     mugType?: string, 
     desc?: string,
-    detail?: string 
+    detail?: string, 
+    views?:number
 }
 
 export type CartItemType ={

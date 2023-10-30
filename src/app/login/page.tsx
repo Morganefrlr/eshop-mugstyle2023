@@ -15,7 +15,7 @@ const LoginPage = () => {
     const router = useRouter()
 
     if(status === 'loading'){
-        return <div>Loading</div>
+        return <div className="text-xl text-green-800 flex w-full justify-center items-center">Loading...</div>
     }
     if(status === 'authenticated'){
         router.push('/')
