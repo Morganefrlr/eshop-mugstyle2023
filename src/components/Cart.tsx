@@ -4,6 +4,8 @@ import { featuredProducts } from '@/types';
 import Image from 'next/image';
 import { useCartStore } from '@/utils/store';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 
 
@@ -12,12 +14,35 @@ const Cart = ({openCart, setOpenCart} : any) => {
 
     const {products, totalPrice, removeFromCart} = useCartStore()
     const {data : session} = useSession()
+    const router = useRouter()
 
     useEffect(() =>{
         useCartStore.persist.rehydrate()
     },[])
 
-
+    const handleCheckout = async () => {
+        setOpenCart(!openCart)
+        if (!session) {
+          router.push("/login");
+        } else {
+          try {
+            const res = await fetch("http://localhost:3000/api/orders", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                price: totalPrice,
+                products,
+                status: "Not Paid!",
+                userEmail: session.user.email,
+              }),
+            });
+            const data =await res.json()
+           router.push(`/pay/${data.id}`)
+          } catch (err) {
+            console.log(err);
+          }
+        }
+    };
 
 
 
@@ -49,7 +74,7 @@ const Cart = ({openCart, setOpenCart} : any) => {
                     <p>Subtotal</p>
                     <p>$ {totalPrice}</p>
                 </div>
-                <button className='w-1/2 flex justify-center items-center uppercase tracking-widest bg-zinc-100 h-14 mx-auto mt-10 text-[#1D1F2D] font-medium cursor-pointer max-lg:w-full'>continue to checkout</button>
+                <button className='w-1/2 flex justify-center items-center uppercase tracking-widest bg-zinc-100 h-14 mx-auto mt-10 text-[#1D1F2D] font-medium cursor-pointer max-lg:w-full' onClick={handleCheckout}>continue to checkout</button>
             </div>
         </div>
     );

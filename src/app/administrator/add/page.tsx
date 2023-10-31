@@ -75,8 +75,8 @@ const addProductPageTest = () => {
                 <label htmlFor="files"><MdAddPhotoAlternate className='text-3xl cursor-pointer mb-10'/></label>
                     {file && file.length !== 0 &&
                         <div className="w-full flex justify-center gap-5 my-20 max-sm:flex-wrap">
-                        {file.length && file.map(img =>
-                            <Image src={URL.createObjectURL(img)} alt='' width={200} height={200} className="w-20 h-20 object-cover"/>
+                        {file.length && file.map((img, index) =>
+                            <Image src={URL.createObjectURL(img)} key={index} alt='' width={200} height={200} className="w-20 h-20 object-cover"/>
                             )}
                         </div>
                     }

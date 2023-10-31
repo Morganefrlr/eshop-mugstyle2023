@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 
@@ -22,6 +23,7 @@ type Props ={
 
 const InputsProduct = ({title, pictures, slug, desc, detail, price, mugType, material, color, capacity, width, height, isFeatured, update} : Props) => {
 
+    const router = useRouter()
     
     const [descUpdate, setDescUpdate] = useState(desc)
     const [detailUpdate, setDetailUpdate] = useState(detail)
@@ -66,6 +68,7 @@ const InputsProduct = ({title, pictures, slug, desc, detail, price, mugType, mat
                     })
                 })
                 const data = await res.json()
+                
             }catch(err){
                 console.log(err)
 
@@ -94,6 +97,7 @@ const InputsProduct = ({title, pictures, slug, desc, detail, price, mugType, mat
                     })
                 })
                 const data = await res.json()
+                router.push(`/our-products/${data.slug}`)
                
             }catch(err){
                 console.log(err)

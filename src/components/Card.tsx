@@ -31,7 +31,7 @@ const Card : React.FC<Props> = ({title, img, price, slug, update}) => {
                 </div>
                 
                 <div className='h-full flex flex-col justify-between text-2xl'>
-                  <Link href={`/administrator/${slug}`}><LiaEdit className='hover:text-green-600 cursor-pointer'/></Link>
+                  <Link href={`/administrator/products/${slug}`}><LiaEdit className='hover:text-green-600 cursor-pointer'/></Link>
                    <ButtonDelete slug={slug}/>
                 </div>
             </>)

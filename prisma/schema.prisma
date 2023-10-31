@@ -46,6 +46,7 @@ model User {
   isAdmin       Boolean @default(false)
   accounts      Account[]
   sessions      Session[]
+  Order        Order[]
 
 }
 
@@ -75,4 +76,15 @@ model Product {
   detail       String
   isFeatured   Boolean
   views        Int 
+}
+
+model Order {
+  id           String   @id @default(cuid()) @map("_id")
+  createdAt    DateTime @default(now())
+  price        Int
+  products     Json[]
+  status       String
+  intent_id    String? @unique
+  user         User @relation(fields: [userEmail], references: [email])
+  userEmail    String
 }

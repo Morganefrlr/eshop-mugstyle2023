@@ -15,8 +15,18 @@ export type ProductType = {
     mugType?: string, 
     desc?: string,
     detail?: string, 
-    views?:number
+    views?:number,
+    isFeatured? : boolean
 }
+export type OrderType = {
+    id: string;
+    userEmail: string;
+    price: number;
+    products: CartItemType[];
+    status: string;
+    createdAt: Date;
+    intent_id?: String;
+  };
 
 export type CartItemType ={
     id:number,
